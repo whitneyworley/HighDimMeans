@@ -1,5 +1,5 @@
 #' Correlated Block Covariance Matrix
-#'
+#' 
 #' Creates a covariance structure with a block diagonal.
 #'
 #' @param p Number of dimensions.
