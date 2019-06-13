@@ -10,14 +10,13 @@ dlrTest <- function(x, y) {
   browser()
   n1 <- nrow(x)
   n2 <- nrow(y)
+  N <- n1 + n2
   xbar <- colMeans(x)
   ybar <- colMeans(y)
   nu2 <- n1 + n2 - 2
-  s <- 1 / (n1 + n2 - 2) * (
-    matrix(x - xbar, ncol = 1) %*% t(matrix(x - xbar, nrow = 1)) +
-      matrix(y - ybar, ncol = 1) %*% t(matrix(y - ybar, nrow = 1))
-  )
-  tsq <- sqrt(n1 * n2 / (n1 + n2)) * (xbar - ybar) / diag(s)
-  t2 <- (n1 + n2) * sum(log(1 + tsq / nu2))
+  sx <- cov(x)
+  sy <- cov(y)
+  s <- ((n1 - 1) * sx + (n2 - 1) * sy) / (n1 + n2)
+  t2 <- N * sum(log(1 + n1 * n2 / (N * (N - 2)) * (xbar - ybar)^2 / diag(s)))
   t2
 }
