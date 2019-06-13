@@ -7,6 +7,7 @@
 #' @export
 
 dlrTest <- function(x, y) {
+  browser()
   n1 <- nrow(x)
   n2 <- nrow(y)
   xbar <- colMeans(x)
