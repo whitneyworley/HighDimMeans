@@ -6,7 +6,7 @@
 #' @return Diagonal Likelood Ratio test statistic for different mean vectors.
 #' @export
 
-drlTest <- function(x, y) {
+dlrTest <- function(x, y) {
   n1 <- nrow(x)
   n2 <- nrow(y)
   xbar <- colMeans(x)
