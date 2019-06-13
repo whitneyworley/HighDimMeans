@@ -14,7 +14,8 @@ dlrTest <- function(x, y) {
   ybar <- colMeans(y)
   nu2 <- n1 + n2 - 2
   s <- 1 / (n1 + n2 - 2) * (
-    (x - xbar) %*% t(x - xbar) + (y - ybar) %*% t(y - ybar)
+    matrix(x - xbar, ncol = 1) %*% t(matrix(x - xbar, nrow = 1)) +
+      matrix(y - ybar, ncol = 1) %*% t(matrix(y - ybar, nrow = 1))
   )
   tsq <- sqrt(n1 * n2 / (n1 + n2)) * (xbar - ybar) / diag(s)
   t2 <- (n1 + n2) * sum(log(1 + tsq / nu2))
